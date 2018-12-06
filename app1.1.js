@@ -22,7 +22,7 @@ var config = {
 
 //test to retrieve data
 const checkBtn = document.querySelector("#checkBtn");
-const upload = document.querySelector("#upload");
+
 var docRef = firestore.collection("sample3");
 var allValues = document.querySelector("#allValues");
 var values=[];
@@ -32,7 +32,7 @@ firestore.collection("sample3").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
         values.push(doc.data().name);
-        allValues.innerText=values.join(", ");
+        allValues.innerText=values.join(" | ");
     });
 });
 
@@ -50,6 +50,7 @@ checkBtn.addEventListener("click",function(){
         outputNameField.innerText=doc.data().name;
         outputPopulationField.innerText=doc.data().population;
         outputCountryField.innerText=doc.data().country;
+        
         });
     })
     .catch(function(error) {
