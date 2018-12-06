@@ -22,7 +22,7 @@ var config = {
 
 //test to retrieve data
 const checkBtn = document.querySelector("#checkBtn");
-
+const uploadNewBtn = document.querySelector("#uploadNewBtn");
 var docRef = firestore.collection("sample3");
 var allValues = document.querySelector("#allValues");
 var values=[];
@@ -39,7 +39,7 @@ firestore.collection("sample3").get().then(function(querySnapshot) {
 // This is the check button functionality
 
 checkBtn.addEventListener("click",function(){
-    var searchItem = inputBox.value;
+    var searchItem = inputBox.value.trim();
     firestore.collection("sample3")
     .where("name", "==", searchItem)
     .get()
@@ -56,4 +56,20 @@ checkBtn.addEventListener("click",function(){
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
+});
+
+//By now this code is really ineficient, it adds every time new information
+
+uploadNewBtn.addEventListener("click",function(){
+    
+    var newNameValue = newName.value;
+    var newPopulationValue = newPopulation.value;
+    var newCountryValue = newCountry.value;
+
+    firestore.collection("sample3").add({
+        name : newNameValue,
+        population : newPopulationValue,
+        country : newCountryValue
+    });
+
 });
