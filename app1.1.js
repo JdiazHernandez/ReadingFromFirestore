@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyBgzO2wZe4JNl5VThld00JBw0J1vfL7UF8",
-    authDomain: "firestoredbtest-f77b4.firebaseapp.com",
-    databaseURL: "https://firestoredbtest-f77b4.firebaseio.com",
-    projectId: "firestoredbtest-f77b4",
-    storageBucket: "firestoredbtest-f77b4.appspot.com",
-    messagingSenderId: "984838070173"
+    apiKey: "",
+    authDomain: "-.firebaseapp.com",
+    databaseURL: "https://-.firebaseio.com",
+    projectId: "-",
+    storageBucket: "-.appspot.com",
+    messagingSenderId: ""
   };
   
  firebase.initializeApp(config);
@@ -23,12 +23,12 @@ var config = {
 //test to retrieve data
 const checkBtn = document.querySelector("#checkBtn");
 const uploadNewBtn = document.querySelector("#uploadNewBtn");
-var docRef = firestore.collection("sample3");
+var docRef = firestore.collection("");
 var allValues = document.querySelector("#allValues");
 var values=[];
 
 
-firestore.collection("sample3").get().then(function(querySnapshot) {
+firestore.collection("").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
         values.push(doc.data().name);
@@ -40,7 +40,7 @@ firestore.collection("sample3").get().then(function(querySnapshot) {
 
 checkBtn.addEventListener("click",function(){
     var searchItem = inputBox.value.trim();
-    firestore.collection("sample3")
+    firestore.collection("")
     .where("name", "==", searchItem)
     .get()
     .then(function(querySnapshot) {
@@ -66,7 +66,7 @@ uploadNewBtn.addEventListener("click",function(){
     var newPopulationValue = newPopulation.value;
     var newCountryValue = newCountry.value;
 
-    firestore.collection("sample3").add({
+    firestore.collection("").add({
         name : newNameValue,
         population : newPopulationValue,
         country : newCountryValue
